@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: custom-broker
+  namespace: custom-broker
+  labels:
+    run: custom-broker
+spec:
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  selector:
+    run: custom-broker
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: custom-broker
+  namespace: custom-broker
+  labels:
+    run: custom-broker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: custom-broker
+  template:
+    metadata:
+      labels:
+        run: custom-broker
+    spec:
+      containers:
+      - image: sample/custom-service-broker:0.0.1.BUILD-SNAPSHOT
+        name: custom-broker
+        ports:
+        - containerPort: 8080

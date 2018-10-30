@@ -1,0 +1,12 @@
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceInstance
+metadata:
+  name: custom-instance
+  namespace: test
+  labels:
+    run: custom-broker
+spec:
+  clusterServiceClassExternalName: custom
+  clusterServicePlanExternalName: standard
+  parameters:
+    max: 10

@@ -1,0 +1,14 @@
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ClusterServiceBroker
+metadata:
+  name: custom-broker
+  labels:
+    run: custom-broker
+spec:
+  url: http://custom-broker.custom-broker.svc.cluster.local
+  authInfo:
+    basic:
+      secretRef:
+        name: custom-broker-secret
+        namespace: catalog
+

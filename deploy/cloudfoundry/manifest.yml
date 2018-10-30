@@ -1,0 +1,6 @@
+---
+applications:
+- name: custom-service-broker
+  memory: 1G
+  path: ../../build/libs/custom-service-broker-0.0.1.BUILD-SNAPSHOT.jar
+

@@ -1,0 +1,10 @@
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceBinding
+metadata:
+  name: custom-binding
+  namespace: test
+  labels:
+    run: custom-broker
+spec:
+  instanceRef:
+    name: custom-instance
